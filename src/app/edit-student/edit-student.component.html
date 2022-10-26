@@ -1,8 +1,12 @@
-<button (click)="studentClicked()">Edit student data</button>
+&nbsp;&nbsp;
+<button [ngClass]="'button'" (click)="studentClicked()">Edit student data</button>
 <span *ngIf="clicked!=-1">
+  &nbsp;&nbsp;
   <input type="text" [(ngModel)]="studentForEdit.Name" />
   <input type="text" [(ngModel)]="studentForEdit.Surname" />
   <input type="number" [(ngModel)]="studentForEdit.IndexNumber" />
-  <button (click)="save()">Save</button>
-  <button (click)="hide()">Cancel</button>
+  &nbsp;&nbsp;
+  <button [ngClass]="'button'" (click)="save()">Save</button>
+  &nbsp;
+  <button [ngClass]="'button'" (click)="hide()">Cancel</button>
 </span>

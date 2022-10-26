@@ -11,6 +11,7 @@ import { WhichType } from '../edit-student/edit-student.component';
 export class StudentsComponent implements OnInit {
   students:StudentClass[]=[];
   addButtonWasClicked:boolean=false;
+  deleteButtonWasClicked:boolean=false;
   constructor() { }
 
   ngOnInit() {
@@ -22,7 +23,7 @@ export class StudentsComponent implements OnInit {
   }
 
   validationStudentData(student:StudentClass, indexInList:number):boolean {
-    if(student.Name.length > 0 && student.Surname.length > 0 && typeof student.IndexNumber == "number")
+    if(student.Name.length > 0 && student.Surname.length > 0 && typeof student.IndexNumber == "number" && student.IndexNumber >= 0)
     {
       for(let i:number=0; i<this.students.length; i++)
       {
@@ -52,9 +53,15 @@ export class StudentsComponent implements OnInit {
   }
 
   deleteButtonClicked(): void{
-
+    this.deleteButtonWasClicked=true;
   }
 
-
-
+  deleteStudentOperationEnd(deleteOrNot:number):void{
+    this.deleteButtonWasClicked=false;
+    if(deleteOrNot != -1)
+    {
+      this.students.splice(deleteOrNot, 1);
+      console.log("Usunieto: ", deleteOrNot);
+    }
+  }
 }

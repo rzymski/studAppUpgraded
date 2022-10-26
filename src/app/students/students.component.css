@@ -19,3 +19,7 @@ li{
   font-size: 32px;
   padding: 15px 32px;
 }
+
+.delete {
+  float:right
+}
