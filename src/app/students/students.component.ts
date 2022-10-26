@@ -10,6 +10,7 @@ import { WhichType } from '../edit-student/edit-student.component';
 })
 export class StudentsComponent implements OnInit {
   students:StudentClass[]=[];
+  addButtonWasClicked:boolean=false;
   constructor() { }
 
   ngOnInit() {
@@ -20,22 +21,40 @@ export class StudentsComponent implements OnInit {
     this.students.push(new StudentClass("zxczxvz", "sdfsdf", 9675670));
   }
 
-  doEditStudentData(editedStudent:WhichType){
-    console.log(editedStudent);
-    if(editedStudent.student.Name.length > 0 && editedStudent.student.Surname.length > 0 && typeof editedStudent.student.IndexNumber == "number")
+  validationStudentData(student:StudentClass, indexInList:number):boolean {
+    if(student.Name.length > 0 && student.Surname.length > 0 && typeof student.IndexNumber == "number")
     {
-      let unique:boolean=true;
       for(let i:number=0; i<this.students.length; i++)
       {
-        if(this.students[i].IndexNumber == editedStudent.student.IndexNumber && i != editedStudent.which)
-        {
-          unique = false;
-          break;
-        }
+        if(this.students[i].IndexNumber == student.IndexNumber && i != indexInList)
+          return false;
       }
-      if(unique)
-        this.students[editedStudent.which] = editedStudent.student;
+      return true;
     }
+    return false;
   }
+
+  doEditStudentData(editedStudent:WhichType){
+    console.log(editedStudent);
+    if(this.validationStudentData(editedStudent.student, editedStudent.which))
+      this.students[editedStudent.which] = editedStudent.student;
+  }
+
+  addButtonClicked(): void{
+    this.addButtonWasClicked=true;
+  }
+
+  addStudentoperationEnd(studentData:StudentClass):void{
+    console.log(studentData);
+    this.addButtonWasClicked=false;
+    if(studentData.IndexNumber != 0 && this.validationStudentData(studentData, -1))
+      this.students.push(studentData);
+  }
+
+  deleteButtonClicked(): void{
+
+  }
+
+
 
 }

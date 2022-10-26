@@ -14,3 +14,8 @@ ol{
 li{
   border-style: ridge;
 }
+
+.button {
+  font-size: 32px;
+  padding: 15px 32px;
+}

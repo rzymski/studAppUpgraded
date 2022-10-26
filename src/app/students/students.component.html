@@ -4,8 +4,10 @@
       <print-student prefix="{{student.Name.endsWith('a')?'Pani':'Pan'}}" [studentForPrint]="student" [isOdd]="isOdd"></print-student>
       <edit-student [which]="i" [studentData]="student" (doEditInParent)="doEditStudentData($event)"></edit-student>
   </li>
+  <p *ngIf="addButtonWasClicked"><add-student (operationEnd)="addStudentoperationEnd($event)"></add-student></p>
 </ol>
 
-<!-- <p align="right" style="font-size:40px">GeeksforGeeks <add-student align="right" style="font-size:40px"></add-student></p> -->
-<p align="right"><add-student></add-student><delete-student></delete-student></p>
-
+<p align="right">
+<button [ngClass]="'button'" (click)="addButtonClicked()">Add new student</button>
+<button [ngClass]="'button'" (click)="deleteButtonClicked()">Delete student</button>
+</p>

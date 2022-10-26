@@ -1,1 +1,3 @@
-<button [ngClass]="'button'" (click)="addButtonClicked()">Add new student</button>
+<span>PODAJ DANE NOWEGO STUDENTA: <span> IMIE: <input type="text" [(ngModel)]="studentForAdd.Name" /> NAZWISKO: <input type="text" [(ngModel)]="studentForAdd.Surname" /> NR. INDEKSU: <input type="number" [(ngModel)]="studentForAdd.IndexNumber" /> </span> &nbsp;&nbsp;&nbsp; </span>
+<button [ngClass]="'button'" button (click)="add()">Add new student with this data</button>
+<button [ngClass]="'button'" button (click)="cancel()">Cancel</button>

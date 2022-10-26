@@ -11,8 +11,4 @@ export class DeleteStudentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  deleteButtonClicked(): void{
-
-  }
 }
