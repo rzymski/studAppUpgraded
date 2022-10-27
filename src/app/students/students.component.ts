@@ -16,10 +16,42 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit() {
     console.log("Students");
-    this.students.push(new StudentClass("Piotr", "XD", 1500));
-    this.students.push(new StudentClass("Ala", "MaKota", 100));
-    this.students.push(new StudentClass("Grzegorz", "Brzeczyszczykiewicz", 9000));
-    this.students.push(new StudentClass("zxczxvz", "sdfsdf", 9675670));
+    let s1:StudentClass = new StudentClass("Piotr", "XD", 1500);
+    s1.addSubject("Matematyka");
+    s1.setMarksToSubject("Matematyka", [4.5, 3.5, 5]);
+    s1.addSubject("Polski");
+    s1.setMarksToSubject("Polski", [1,2,3]);
+    s1.addSubject("W-f");
+    s1.setMarksToSubject("W-f", [4,5,4.5, 5, 5, 5, 4.5]);
+    //console.log(s1);
+
+    let s2:StudentClass = new StudentClass("Ala", "MaKota", 100);
+    s2.addSubject("Chemia");
+    s2.setMarksToSubject("Chemia", [2, 3, 2.5, 2]);
+    s2.addSubject("Angielski");
+    s2.setMarksToSubject("Angielski", [4, 4.5, 5, 4]);
+    s2.addSubject("Fizyka");
+    s2.setMarksToSubject("Fizyka", [2]);
+    let s3:StudentClass = new StudentClass("Grzegorz", "Brzeczyszczykiewicz", 9000);
+    s3.addSubject("Matematyka");
+    s3.setMarksToSubject("Matematyka", [5, 4.5, 4, 5]);
+    let s4:StudentClass = new StudentClass("Juliusz", "Cezar", 9675670);
+    s4.addSubject("Matematyka");
+    s4.setMarksToSubject("Matematyka", [5, 2, 3, 4]);
+    s4.addSubject("Polski");
+    s4.setMarksToSubject("Polski", [2, 2, 2]);
+    s4.addSubject("W-f");
+    s4.setMarksToSubject("W-f", [4,5,3.5, 5, 4, 4, 3.5]);
+    s4.addSubject("Chemia");
+    s4.setMarksToSubject("Chemia", [4, 3, 4.5, 2]);
+    s4.addSubject("Angielski");
+    s4.setMarksToSubject("Angielski", [2, 2.5, 2, 2]);
+    s4.addSubject("Fizyka");
+    s4.setMarksToSubject("Fizyka", [5]);
+    this.students.push(s1);
+    this.students.push(s2);
+    this.students.push(s3);
+    this.students.push(s4);
   }
 
   validationStudentData(student:StudentClass, indexInList:number):boolean {

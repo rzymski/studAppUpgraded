@@ -1,3 +1,11 @@
+<button [ngClass]="'button'" (click)="printDetailedData()">Print Detailed Data</button>
+<button [ngClass]="'button'" (click)="hideDetailedData()">Hide</button>
+&nbsp;&nbsp;&nbsp;
 <span [class.oddRow]="isOdd" [class.evenRow]="!isOdd">
   {{prefix}} {{studentForPrint.Name}} {{studentForPrint.Surname}} {{studentForPrint.IndexNumber}}
+</span>
+<span *ngIf="printDetailedDataBool">
+  <p *ngFor="let subjectWithMarks of studentForPrint.getAllSubjects(); index as i">
+    {{subjectWithMarks.Name}} <span *ngFor="let mark of subjectWithMarks.Marks; index as j"> {{mark}} | </span>
+  </p>
 </span>

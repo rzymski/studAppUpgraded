@@ -16,4 +16,15 @@ export class PrintStudentComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
+  printDetailedDataBool:boolean=false;
+  printDetailedData(){
+    this.printDetailedDataBool=true;
+    console.log(this.studentForPrint)
+  }
+
+  hideDetailedData(){
+    this.printDetailedDataBool=false;
+  }
 }
