@@ -8,4 +8,7 @@
   <p *ngFor="let subjectWithMarks of studentForPrint.getAllSubjects(); index as i">
     {{subjectWithMarks.Name}} <span *ngFor="let mark of subjectWithMarks.Marks; index as j"> {{mark}} | </span>
   </p>
+  <p>Srednia wszystkich ocen = {{studentForPrint.averageGrade | number :'1.1-1'}}</p>
+  <span *ngIf="printSchoolarshipBool"><span *ngIf="scholarshipValue>0">Stypendium = {{scholarshipValue | currency: 'PLN': 'zł'}}</span><span *ngIf="scholarshipValue<=0"> Brak stypendium, za słaba średnia.</span></span>
+  <span *ngIf="!printSchoolarshipBool"><button [ngClass]="'button'" (click)="printSchoolarship()">Oblicz stypendium</button></span>
 </span>

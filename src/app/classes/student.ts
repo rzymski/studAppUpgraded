@@ -2,8 +2,10 @@ import { SubjectClass } from "./subject";
 
 export class StudentClass{
   subjectsWithMarks:SubjectClass[];
+  averageGrade:number;
   constructor(private name:string, private surname:string, private indexNumber:number){
     this.subjectsWithMarks = [];
+    this.averageGrade = 0;
   }
   //constructor(private name:string, private surname:string, private indexNumber:number){}
 
@@ -70,6 +72,34 @@ export class StudentClass{
 
   getAllSubjects():SubjectClass[]{
     return this.subjectsWithMarks;
+  }
+
+  getAllMarks():number[]{
+    let allMarks:number[] = [];
+    for(let i:number=0; i<this.subjectsWithMarks.length; i++)
+    {
+      for(let j:number=0; j<this.subjectsWithMarks[i].Marks.length; j++)
+      {
+        allMarks.push(this.subjectsWithMarks[i].Marks[j]);
+      }
+
+    }
+    return allMarks;
+  }
+
+  calculateAverage():void{
+    let sumMarksValue:number=0;
+    let numberOfMarks:number=0;
+    for(let i:number=0; i<this.subjectsWithMarks.length; i++)
+    {
+      for(let j:number=0; j<this.subjectsWithMarks[i].Marks.length; j++)
+      {
+        //console.log(this.subjectsWithMarks[i].Marks[j]);
+        sumMarksValue += this.subjectsWithMarks[i].Marks[j];
+        numberOfMarks++;
+      }
+    }
+    this.averageGrade = sumMarksValue/numberOfMarks;
   }
 
 }

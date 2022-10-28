@@ -1,7 +1,8 @@
 <p [ngClass]="'title'" printTitle color="green" sep="~" font="20">Lista studentów</p>
 <ol>
   <li *ngFor="let student of students; index as i;odd as isOdd; even as isEven">
-      <print-student prefix="{{student.Name.endsWith('a')?'Pani':'Pan'}}" [studentForPrint]="student" [isOdd]="isOdd"></print-student>
+      <print-student prefix="{{student.Name.endsWith('a')?'Pani':'Pan'}}" [studentForPrint]="student" [isOdd]="isOdd" [avgOfAllMarks]="calculateAvgGradeOFAll()"></print-student>
+      <br style="font-size:30px">
       <span class="edit"><edit-student [which]="i" [studentData]="student" (doEditInParent)="doEditStudentData($event)"></edit-student></span>
       <span class="delete" *ngIf="deleteButtonWasClicked"><delete-student (operationEnd)="deleteStudentOperationEnd($event)" [which]="i"></delete-student></span>
   </li>

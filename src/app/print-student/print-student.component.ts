@@ -10,6 +10,7 @@ export class PrintStudentComponent implements OnInit {
   @Input() studentForPrint!:StudentClass;
   @Input() isOdd!:boolean;
   @Input() prefix!: String;
+  @Input() avgOfAllMarks!:number;
 
 
   constructor() { }
@@ -19,12 +20,25 @@ export class PrintStudentComponent implements OnInit {
 
 
   printDetailedDataBool:boolean=false;
+
   printDetailedData(){
+    this.studentForPrint.calculateAverage();
+    console.log("Średnia = ", this.studentForPrint.averageGrade);
+
     this.printDetailedDataBool=true;
-    console.log(this.studentForPrint)
+    console.log(this.studentForPrint);
   }
 
   hideDetailedData(){
     this.printDetailedDataBool=false;
+    this.printSchoolarshipBool=false;
+  }
+
+  printSchoolarshipBool:boolean=false;
+  scholarshipValue:number=0;
+  printSchoolarship(){
+    this.printSchoolarshipBool=true;
+    if(this.studentForPrint.averageGrade > this.avgOfAllMarks)
+      this.scholarshipValue = this.studentForPrint.averageGrade*100;
   }
 }

@@ -23,7 +23,6 @@ export class StudentsComponent implements OnInit {
     s1.setMarksToSubject("Polski", [1,2,3]);
     s1.addSubject("W-f");
     s1.setMarksToSubject("W-f", [4,5,4.5, 5, 5, 5, 4.5]);
-    //console.log(s1);
 
     let s2:StudentClass = new StudentClass("Ala", "MaKota", 100);
     s2.addSubject("Chemia");
@@ -48,10 +47,14 @@ export class StudentsComponent implements OnInit {
     s4.setMarksToSubject("Angielski", [2, 2.5, 2, 2]);
     s4.addSubject("Fizyka");
     s4.setMarksToSubject("Fizyka", [5]);
+    let s5:StudentClass = new StudentClass("Ga", "Ga", 40000000)
+    s5.addSubject("Filozofia");
+    s5.setMarksToSubject("Filozofia", [1, 0, 0])
     this.students.push(s1);
     this.students.push(s2);
     this.students.push(s3);
     this.students.push(s4);
+    this.students.push(s5);
   }
 
   validationStudentData(student:StudentClass, indexInList:number):boolean {
@@ -95,5 +98,22 @@ export class StudentsComponent implements OnInit {
       this.students.splice(deleteOrNot, 1);
       console.log("Usunieto: ", deleteOrNot);
     }
+  }
+
+  calculateAvgGradeOFAll(): number
+  {
+    let sumMarksValue:number=0;
+    let numberOfMarks:number=0;
+    for(let i:number=0; i<this.students.length; i++)
+    {
+      for(let j:number=0; j<this.students[i].getAllMarks().length; j++)
+      {
+        sumMarksValue += this.students[i].getAllMarks()[j];
+        numberOfMarks++;
+      }
+    }
+    let avg:number = sumMarksValue/numberOfMarks;
+    console.log("Srednia wszystkich ocen", avg);
+    return avg;
   }
 }
