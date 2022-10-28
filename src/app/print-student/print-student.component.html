@@ -10,5 +10,6 @@
   </p>
   <p>Srednia wszystkich ocen = {{studentForPrint.averageGrade | number :'1.1-1'}}</p>
   <span *ngIf="printSchoolarshipBool"><span *ngIf="scholarshipValue>0">Stypendium = {{scholarshipValue | currency: 'PLN': 'zł'}}</span><span *ngIf="scholarshipValue<=0"> Brak stypendium, za słaba średnia.</span></span>
-  <span *ngIf="!printSchoolarshipBool"><button [ngClass]="'button'" (click)="printSchoolarship()">Oblicz stypendium</button></span>
+  <br>
+  <span><button [ngClass]="'button'" (click)="printSchoolarship()">Oblicz stypendium</button></span>
 </span>
